@@ -1,19 +1,26 @@
-//text - проверяемый текст
+//text - вводимая строка
+//pos - начальный индекс
+//len - длина подстроки
 
-const isPalindrome = (text) => {
-  text = text.toUpperCase();
-  if (text.length <= 1) {
-    return true;
+const substr = (text, pos = 0, len = text.length) => {
+  if (len < 0) {
+    len = 1;
   }
-  
-  if (text[0] !== text[text.length - 1]) {
-    return false;
+  if (len > (text.length - pos)) {
+    len = text.length;
   }
-  else {
-    text = text.substr(1, text.length - 2);
-    return isPalindrome(text);
+  if (pos < 0) {
+    pos = 0;
   }
+  if (pos > text.length) {
+    return result;
+  }
+  let result = "";
+  for (pos; pos < len; pos++) {
+    result += text[pos];
+  }
+  return result;
 };
 
-console.log(isPalindrome(' .Faf. '));
-//export default isPalindrome;
+console.log(substr('ADCAsAAdsdas', 3, 48));
+export default substr;
